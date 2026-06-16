@@ -166,7 +166,7 @@ export default function DepoimentosVideo() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, ease: 'easeOut', delay: 0.15 + i * 0.15 }}
             >
-              <VideoCard video={d.video} poster={d.poster} nome={d.nome} />
+              <VideoCard key={d.nome} video={d.video} poster={d.poster} nome={d.nome} />
             </motion.div>
           ))}
         </div>

@@ -54,7 +54,7 @@ export default function PalavraFundador() {
               margin: 0,
             }}
           >
-            Conheça a história e os valores que guiam a CP Cuidadores Profissionais há mais de 14 anos.
+            Conheça a história e os valores que guiam a CP Cuidadores Profissionais há mais de 15 anos.
           </p>
 
           <motion.div

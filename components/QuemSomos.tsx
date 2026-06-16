@@ -63,7 +63,7 @@ export default function QuemSomos() {
                 alt="Cuidadora CP com idoso"
                 width={600}
                 height={520}
-                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block' }}
               />
             </div>
           </motion.div>
@@ -100,7 +100,7 @@ export default function QuemSomos() {
                 fontSize: 'clamp(24px, 5vw, 52px)',
               }}
             >
-              Mais de uma década cuidando de quem você mais ama.
+              Mais de 15 anos cuidando de quem você mais ama.
             </h2>
 
             <p
@@ -113,7 +113,7 @@ export default function QuemSomos() {
                 margin: 0,
               }}
             >
-              Fundada em 9 de novembro de 2011, a CP Cuidadores Profissionais nasceu da convicção de que cuidar é, antes de tudo, um ato de presença. Em mais de uma década, formamos uma rede cuidadosamente selecionada de profissionais dedicados a oferecer ao idoso a dignidade, o conforto e a atenção que ele merece.
+              Fundada em 9 de novembro de 2011, a CP Cuidadores Profissionais nasceu da convicção de que cuidar é, antes de tudo, um ato de presença. Em mais de 15 anos, formamos uma rede cuidadosamente selecionada de profissionais dedicados a oferecer ao idoso a dignidade, o conforto e a atenção que ele merece.
             </p>
 
             <p

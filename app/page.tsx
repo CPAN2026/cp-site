@@ -7,7 +7,8 @@ import QuemSomos from '@/components/QuemSomos';
 import CTAWhatsApp from '@/components/CTAWhatsApp';
 import Credibilidade from '@/components/Credibilidade';
 import Servicos from '@/components/Servicos';
-import Depoimentos from '@/components/Depoimentos';
+import DepoimentosVideo from '@/components/DepoimentosVideo';
+import PalavraFundador from '@/components/PalavraFundador';
 import CTAFinal from '@/components/CTAFinal';
 import Footer from '@/components/Footer';
 import WhatsAppFloat from '@/components/WhatsAppFloat';
@@ -21,10 +22,11 @@ export default function Home() {
       <PropostaValor />
       <ComoFunciona />
       <QuemSomos />
+      <PalavraFundador />
       <CTAWhatsApp />
       <Credibilidade />
       <Servicos />
-      <Depoimentos />
+      <DepoimentosVideo />
       <CTAFinal />
       <Footer />
       <WhatsAppFloat />

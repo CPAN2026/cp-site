@@ -1,0 +1,30 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+:root {
+  --verde-escuro: #1a3a16;
+  --verde-primario: #4a8c3f;
+  --branco: #ffffff;
+  --cinza-claro: #f8f8f6;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-body), sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), serif;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display), serif;
+}
+
+p, a, span, li, button {
+  font-family: var(--font-body), sans-serif;
+}

@@ -20,6 +20,10 @@ export const metadata: Metadata = {
   title: "CP Cuidadores Profissionais | Rio de Janeiro e Niterói",
   description:
     "Cuidadores profissionais de idosos no Rio de Janeiro e Niterói. Desde 2011, cuidado especializado, humano e contínuo.",
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
+  },
 };
 
 export default function RootLayout({

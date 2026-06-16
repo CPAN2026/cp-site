@@ -9,7 +9,7 @@ interface Item {
 }
 
 const ITEMS: Item[] = [
-  { target: 14,  suffix: '+', label: 'Anos de Experiência' },
+  { target: 15,  suffix: '+', label: 'Anos de Experiência' },
   { target: 24,  suffix: 'h', label: 'Presença Contínua'  },
   { target: 100, suffix: '%', label: 'Dedicação e Cuidado' },
 ];

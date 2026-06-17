@@ -21,8 +21,8 @@ export const metadata: Metadata = {
   description:
     "Cuidadores profissionais de idosos no Rio de Janeiro e Niterói. Desde 2011, cuidado especializado, humano e contínuo.",
   icons: {
-    icon: '/favicon.svg',
-    apple: '/logo.png',
+    icon: '/favicon.png',
+    apple: '/apple-icon.png',
   },
 };
 

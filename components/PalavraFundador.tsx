@@ -76,7 +76,7 @@ export default function PalavraFundador() {
               <>
                 <img
                   src="/arlindocpnogueira.png"
-                  alt="Arlindo Costa Pinto Nogueira"
+                  alt="Arlindo César Pinto Nogueira"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                 />
                 <button
@@ -140,7 +140,7 @@ export default function PalavraFundador() {
                 letterSpacing: '0.3px',
               }}
             >
-              Arlindo Costa Pinto Nogueira
+              Arlindo César Pinto Nogueira
             </span>
             <span
               style={{

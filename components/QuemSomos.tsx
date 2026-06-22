@@ -56,6 +56,7 @@ export default function QuemSomos() {
                 borderRadius: 2,
                 overflow: 'hidden',
                 boxShadow: '0 20px 60px rgba(0,0,0,0.12)',
+                background: '#ffffff',
               }}
             >
               <img
@@ -63,7 +64,7 @@ export default function QuemSomos() {
                 alt="Cuidadora CP com idoso"
                 width={600}
                 height={520}
-                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block' }}
+                style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
               />
             </div>
           </motion.div>

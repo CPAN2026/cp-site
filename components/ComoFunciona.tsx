@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import { Phone, ClipboardList, UserCheck, Heart } from 'lucide-react';
 
-const WA_URL = 'https://wa.me/5521985549320';
+const WA_URL = 'https://wa.me/19209569439';
 
 const ETAPAS = [
   {

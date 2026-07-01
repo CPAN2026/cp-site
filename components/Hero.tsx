@@ -1,7 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 
-const WA_URL = 'https://wa.me/5521985549320';
+const WA_URL = 'https://wa.me/19209569439';
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 30 },

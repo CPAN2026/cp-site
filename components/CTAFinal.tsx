@@ -2,7 +2,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
-const WA_URL = 'https://wa.me/5521985549320';
+const WA_URL = 'https://wa.me/19209569439';
 
 function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);

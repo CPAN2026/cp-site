@@ -11,7 +11,7 @@ export default function CTAWhatsApp() {
           Fale agora com nossa equipe e receba orientação especializada sem compromisso.
         </p>
         <a
-          href="https://wa.me/5521985549320"
+          href="https://wa.me/19209569439"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex w-full sm:w-auto justify-center items-center gap-3 text-white font-bold text-base md:text-lg px-8 md:px-10 py-4 md:py-5 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"

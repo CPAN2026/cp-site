@@ -11,7 +11,7 @@ const NAV = [
   { label: 'Contato',      href: '#cta-final'   },
 ];
 
-const WA_URL = 'https://wa.me/5521985549320';
+const WA_URL = 'https://wa.me/19209569439';
 
 const colTitleStyle: React.CSSProperties = {
   color: 'rgba(255,255,255,0.3)',
@@ -110,7 +110,7 @@ export default function Footer() {
                 onMouseEnter={(e) => (e.currentTarget.style.color = 'white')}
                 onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.6)')}
               >
-                (21) 98554-9320
+                Fale agora via WhatsApp
               </a>
               <span style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14, fontFamily: 'var(--font-body), sans-serif' }}>
                 Av. Nossa Senhora de Copacabana, 664

@@ -2,16 +2,17 @@
 import Image from 'next/image';
 
 const NAV_DESKTOP = [
-  { label: 'Números',     href: '#numeros'     },
-  { label: 'Serviços',    href: '#servicos'    },
-  { label: 'Quem Somos',  href: '#quem-somos'  },
-  { label: 'Depoimentos', href: '#depoimentos' },
-  { label: 'Contato',     href: '#cta-final'   },
+  { label: 'Serviços',      href: '#servicos'      },
+  { label: 'Como funciona', href: '#como-funciona' },
+  { label: 'Quem somos',    href: '#quem-somos'    },
+  { label: 'Depoimentos',   href: '#depoimentos'   },
+  { label: 'Dúvidas',       href: '#faq'           },
+  { label: 'Contato',       href: '#cta-final'     },
 ];
 
 const NAV_MOBILE = [
   { label: 'Serviços',   href: '#servicos'   },
-  { label: 'Quem Somos', href: '#quem-somos' },
+  { label: 'Quem somos', href: '#quem-somos' },
   { label: 'Contato',    href: '#cta-final'  },
 ];
 
@@ -52,12 +53,12 @@ export default function Header() {
               height={52}
               className="w-[110px] md:w-[160px]"
               style={{ objectFit: 'contain', height: 'auto' }}
-              priority
             />
           </a>
 
           {/* Nav desktop */}
           <nav
+            aria-label="Menu principal"
             className="hidden md:flex"
             style={{ gap: 28, alignItems: 'center' }}
           >
@@ -110,7 +111,8 @@ export default function Header() {
         </div>
 
         {/* Linha 2: Nav mobile (apenas 3 itens) */}
-        <div
+        <nav
+          aria-label="Menu principal"
           className="flex md:hidden items-center justify-center gap-6 py-2"
           style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}
         >
@@ -134,7 +136,7 @@ export default function Header() {
               {link.label}
             </a>
           ))}
-        </div>
+        </nav>
 
       </div>
     </header>

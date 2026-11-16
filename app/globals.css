@@ -27,3 +27,104 @@ h1, h2, h3 {
 p, a, span, li, button {
   font-family: var(--font-body), sans-serif;
 }
+
+/* Compensa o cabeçalho fixo ao navegar por âncoras */
+html {
+  scroll-padding-top: 96px;
+}
+
+/* Skip link: visível apenas ao receber foco */
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -100px;
+  z-index: 1000;
+  background: #ffffff;
+  color: #1a3a16;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+.skip-link:focus {
+  top: 8px;
+}
+
+main:focus {
+  outline: none;
+}
+
+/* Animações de entrada: melhoria progressiva.
+   O conteúdo é visível por padrão; só é ocultado quando o JavaScript
+   está disponível (classe .js no <html>) e volta a aparecer via
+   IntersectionObserver (.visible) ou pelo fallback (.reveal-all). */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+    transition-delay: var(--reveal-delay, 0s);
+  }
+
+  .js .reveal.reveal-left {
+    transform: translateX(-40px);
+  }
+
+  .js .reveal.reveal-right {
+    transform: translateX(40px);
+  }
+
+  .js .reveal.visible,
+  .js.reveal-all .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-fade {
+    animation: hero-fade-up 0.8s ease-out both;
+    animation-delay: var(--hero-delay, 0s);
+  }
+
+  @keyframes hero-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* Links externos em nomes de instituições */
+.link-instituicao {
+  color: inherit;
+  text-decoration: none;
+}
+
+.link-instituicao:hover,
+.link-instituicao:focus-visible {
+  text-decoration: underline;
+}
+
+/* FAQ (acordeão nativo) */
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item .faq-icon {
+  transition: transform 0.2s ease;
+}
+
+.faq-item[open] .faq-icon {
+  transform: rotate(45deg);
+}

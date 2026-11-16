@@ -1,30 +1,29 @@
 'use client';
-import { motion } from 'framer-motion';
 import { Ear, GraduationCap, Shield, Heart } from 'lucide-react';
 
 const CARDS = [
   {
     icone: <Ear size={24} color="#86efac" strokeWidth={1.75} />,
-    titulo: 'Presença',
-    texto: 'Cada visita é uma escuta. Estar ali é, em si, parte do tratamento.',
+    titulo: 'Presença e escuta',
+    texto: 'Cada atendimento parte da escuta das necessidades do idoso e da família. Estar presente com atenção faz parte do cuidado.',
     delay: 0,
   },
   {
     icone: <GraduationCap size={24} color="#86efac" strokeWidth={1.75} />,
-    titulo: 'Formação',
-    texto: 'Profissionais com certificação, atualização contínua e supervisão dedicada.',
+    titulo: 'Formação dos profissionais',
+    texto: 'A CP trabalha com profissionais certificados, atualização contínua e supervisão dedicada.',
     delay: 0.1,
   },
   {
     icone: <Shield size={24} color="#86efac" strokeWidth={1.75} />,
-    titulo: 'Discrição',
-    texto: 'Respeitamos a rotina e a intimidade da casa como se fossem nossas.',
+    titulo: 'Discrição e respeito à rotina',
+    texto: 'O atendimento deve preservar a intimidade da casa, os hábitos e as preferências de quem recebe o cuidado.',
     delay: 0.2,
   },
   {
     icone: <Heart size={24} color="#86efac" strokeWidth={1.75} />,
-    titulo: 'Vínculo',
-    texto: 'Relações duradouras entre cuidador, idoso e família — sem rotatividade.',
+    titulo: 'Vínculo com o idoso e a família',
+    texto: 'A CP busca relações duradouras entre cuidador, idoso e família e acompanha o atendimento para fazer ajustes quando necessário.',
     delay: 0.3,
   },
 ];
@@ -33,18 +32,14 @@ export default function PropostaValor() {
   return (
     <section
       id="proposta-valor"
+      aria-labelledby="proposta-valor-titulo"
       style={{ background: '#1a3a16' }}
       className="py-16 md:py-[96px]"
     >
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px' }}>
         {/* Cabeçalho */}
         <div style={{ textAlign: 'center', marginBottom: 56 }}>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-          >
+          <div className="reveal">
             <span
               style={{
                 display: 'inline-block',
@@ -58,48 +53,39 @@ export default function PropostaValor() {
             >
               Nossa Filosofia
             </span>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
-          >
+          <div className="reveal" style={{ '--reveal-delay': '0.1s' } as React.CSSProperties}>
             <h2
+              id="proposta-valor-titulo"
               style={{
                 color: 'white',
                 fontWeight: 700,
                 lineHeight: 1.15,
-                maxWidth: 560,
+                maxWidth: 640,
                 margin: '16px auto',
                 fontSize: 'clamp(28px, 3.5vw, 48px)',
               }}
             >
-              Quatro princípios que orientam cada visita.
+              Princípios do cuidado profissional da CP
             </h2>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
-          >
+          <div className="reveal" style={{ '--reveal-delay': '0.2s' } as React.CSSProperties}>
             <p
               style={{
                 color: 'rgba(255,255,255,0.65)',
                 fontFamily: 'var(--font-body), sans-serif',
                 fontWeight: 400,
                 fontSize: 17,
-                maxWidth: 480,
+                maxWidth: 560,
                 lineHeight: 1.7,
                 margin: '0 auto',
               }}
             >
-              Acreditamos que o cuidado de qualidade nasce da soma entre técnica e sensibilidade.
+              Presença, formação, discrição e vínculo orientam a forma como a CP seleciona profissionais e acompanha cada atendimento.
             </p>
-          </motion.div>
+          </div>
         </div>
 
         {/* Grid 2x2 */}
@@ -108,12 +94,10 @@ export default function PropostaValor() {
           className="grid grid-cols-1 md:grid-cols-2 gap-5"
         >
           {CARDS.map((card) => (
-            <motion.div
+            <div
               key={card.titulo}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.65, ease: 'easeOut', delay: card.delay }}
+              className="reveal"
+              style={{ '--reveal-delay': `${card.delay}s` } as React.CSSProperties}
             >
               <div
                 className="p-6 md:p-9"
@@ -152,7 +136,7 @@ export default function PropostaValor() {
                 </div>
 
                 {/* Título */}
-                <div
+                <h3
                   style={{
                     fontFamily: '"Playfair Display", serif',
                     fontWeight: 700,
@@ -162,7 +146,7 @@ export default function PropostaValor() {
                   }}
                 >
                   {card.titulo}
-                </div>
+                </h3>
 
                 {/* Texto */}
                 <p
@@ -178,7 +162,7 @@ export default function PropostaValor() {
                   {card.texto}
                 </p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

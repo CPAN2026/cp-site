@@ -1,11 +1,10 @@
 'use client';
-import { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useState } from 'react';
 
 const depoimentos = [
-  { video: '/depoimento-1.mp4', poster: '/Angela%20Russi.png', nome: 'Angela Russi' },
-  { video: '/depoimento-2.mp4', poster: '/Jo%C3%A3o%20Felipe.png', nome: 'João Felipe' },
-  { video: '/depoimento-3.mp4', poster: '/Meysi%20Maia.png', nome: 'Meysi Maia' },
+  { video: '/depoimento-1.mp4', poster: '/angela-russi.webp', nome: 'Angela Russi' },
+  { video: '/depoimento-2.mp4', poster: '/joao-felipe.webp', nome: 'João Felipe' },
+  { video: '/depoimento-3.mp4', poster: '/meysi-maia.webp', nome: 'Meysi Maia' },
 ];
 
 function VideoCard({ video, poster, nome }: { video: string; poster: string; nome: string }) {
@@ -29,6 +28,10 @@ function VideoCard({ video, poster, nome }: { video: string; poster: string; nom
             <img
               src={poster}
               alt={nome}
+              width={800}
+              height={450}
+              loading="lazy"
+              decoding="async"
               style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
             <button
@@ -94,18 +97,18 @@ function VideoCard({ video, poster, nome }: { video: string; poster: string; nom
 }
 
 export default function DepoimentosVideo() {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-60px' });
-
   return (
-    <section style={{ background: '#fafafa' }} className="py-[64px] md:py-[96px]">
+    <section
+      id="depoimentos"
+      aria-labelledby="depoimentos-titulo"
+      style={{ background: '#fafafa' }}
+      className="py-[64px] md:py-[96px]"
+    >
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px' }}>
 
-        <div ref={ref} style={{ textAlign: 'center', marginBottom: 56 }}>
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+        <div style={{ textAlign: 'center', marginBottom: 56 }}>
+          <span
+            className="reveal"
             style={{
               display: 'inline-block',
               color: '#4a8c3f',
@@ -118,38 +121,37 @@ export default function DepoimentosVideo() {
             }}
           >
             Depoimentos
-          </motion.span>
+          </span>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 24 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.65, ease: 'easeOut', delay: 0.1 }}
+          <h2
+            id="depoimentos-titulo"
+            className="reveal"
             style={{
+              '--reveal-delay': '0.1s',
               color: '#1a3a16',
               fontWeight: 900,
               lineHeight: 1.15,
               margin: '0 0 16px',
               fontSize: 'clamp(24px, 5vw, 44px)',
-            }}
+            } as React.CSSProperties}
           >
-            O Que Dizem Nossas Famílias
-          </motion.h2>
+            Depoimentos de famílias atendidas pela CP
+          </h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.65, ease: 'easeOut', delay: 0.2 }}
+          <p
+            className="reveal"
             style={{
+              '--reveal-delay': '0.2s',
               color: '#666',
               fontFamily: 'var(--font-body), sans-serif',
               fontSize: 17,
               lineHeight: 1.7,
               maxWidth: 520,
               margin: '0 auto',
-            }}
+            } as React.CSSProperties}
           >
-            Histórias reais de quem confia no nosso cuidado
-          </motion.p>
+            Relatos de quem já contou com o atendimento da CP Cuidadores Profissionais.
+          </p>
         </div>
 
         <div
@@ -160,14 +162,13 @@ export default function DepoimentosVideo() {
           }}
         >
           {depoimentos.map((d, i) => (
-            <motion.div
+            <div
               key={d.nome}
-              initial={{ opacity: 0, y: 40 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, ease: 'easeOut', delay: 0.15 + i * 0.15 }}
+              className="reveal"
+              style={{ '--reveal-delay': `${0.15 + i * 0.15}s` } as React.CSSProperties}
             >
               <VideoCard key={d.nome} video={d.video} poster={d.poster} nome={d.nome} />
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

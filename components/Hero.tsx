@@ -1,34 +1,48 @@
 'use client';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const WA_URL = 'https://wa.me/19209569439';
 
-const fadeUp = (delay: number) => ({
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.8, ease: 'easeOut' as const, delay },
-});
+const fade = (delay: number) => ({ '--hero-delay': `${delay}s` }) as React.CSSProperties;
 
 export default function Hero() {
+  const [loadVideo, setLoadVideo] = useState(false);
+  const [videoOn, setVideoOn] = useState(false);
+
+  // O vídeo só é carregado depois do load da página e nunca para quem
+  // prefere movimento reduzido — nesses casos permanece o pôster.
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const start = () => setLoadVideo(true);
+    if (document.readyState === 'complete') {
+      start();
+      return;
+    }
+    window.addEventListener('load', start, { once: true });
+    return () => window.removeEventListener('load', start);
+  }, []);
+
   return (
     <section
+      aria-labelledby="hero-titulo"
       style={{
         position: 'relative',
-        height: '100vh',
-        minHeight: 600,
+        minHeight: 'max(100vh, 600px)',
         overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
       }}
     >
-      {/* Vídeo */}
-      <video
-        src="/hero-desktop.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
+      {/* Pôster (imagem de LCP) */}
+      <img
+        src="/hero-poster.webp"
+        alt=""
+        width={720}
+        height={1280}
+        fetchPriority="high"
+        decoding="async"
         style={{
           position: 'absolute',
           top: 0,
@@ -39,6 +53,30 @@ export default function Hero() {
           zIndex: 0,
         }}
       />
+
+      {/* Vídeo — carregado após o load da página */}
+      {loadVideo && (
+        <video
+          src="/hero-desktop.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+          onPlaying={() => setVideoOn(true)}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            zIndex: 0,
+            opacity: videoOn ? 1 : 0,
+            transition: 'opacity 0.6s ease',
+          }}
+        />
+      )}
 
       {/* Overlay */}
       <div
@@ -60,13 +98,13 @@ export default function Hero() {
           flexDirection: 'column',
           alignItems: 'center',
           textAlign: 'center',
-          padding: '110px 20px 0',
+          padding: '110px 20px 72px',
           width: '100%',
           boxSizing: 'border-box',
         }}
       >
         {/* Tag */}
-        <motion.div {...fadeUp(0.3)}>
+        <div className="hero-fade" style={fade(0.3)}>
           <span
             style={{
               display: 'block',
@@ -81,12 +119,31 @@ export default function Hero() {
           >
             Desde 09 de novembro de 2011
           </span>
-        </motion.div>
+        </div>
 
         {/* H1 */}
-        <motion.h1
-          {...fadeUp(0.5)}
+        <h1
+          id="hero-titulo"
+          className="hero-fade"
           style={{
+            ...fade(0.4),
+            color: 'white',
+            fontFamily: 'var(--font-body), sans-serif',
+            fontWeight: 600,
+            lineHeight: 1.35,
+            textAlign: 'center',
+            margin: '0 0 16px',
+            fontSize: 'clamp(15px, 2vw, 22px)',
+          }}
+        >
+          Agência de cuidadores de idosos no Rio de Janeiro e Niterói
+        </h1>
+
+        {/* Slogan */}
+        <p
+          className="hero-fade"
+          style={{
+            ...fade(0.5),
             color: 'white',
             fontWeight: 900,
             lineHeight: 1.1,
@@ -97,35 +154,37 @@ export default function Hero() {
         >
           <span style={{ display: 'block' }}>Cuidado profissional,</span>
           <span style={{ display: 'block' }}>presença de família.</span>
-        </motion.h1>
+        </p>
 
         {/* Linha decorativa */}
-        <motion.div
-          {...fadeUp(0.7)}
-          style={{ width: 60, height: 2, background: '#4a8c3f', margin: '32px auto 0' }}
+        <div
+          className="hero-fade"
+          style={{ ...fade(0.7), width: 60, height: 2, background: '#4a8c3f', margin: '32px auto 0' }}
         />
 
         {/* Subtítulo */}
-        <motion.p
-          {...fadeUp(0.8)}
+        <p
+          className="hero-fade"
           style={{
+            ...fade(0.8),
             color: 'rgba(255,255,255,0.82)',
             fontFamily: 'var(--font-body), sans-serif',
             fontWeight: 400,
-            fontSize: 'clamp(16px, 1.8vw, 20px)',
-            maxWidth: 520,
+            fontSize: 'clamp(15px, 1.8vw, 20px)',
+            maxWidth: 680,
             textAlign: 'center',
-            lineHeight: 1.8,
+            lineHeight: 1.7,
             margin: '24px 0 0',
           }}
         >
-          Cuidadores selecionados para idosos no Rio de Janeiro — com dedicação, técnica e respeito.
-        </motion.p>
+          A CP Cuidadores Profissionais oferece plantões de 6, 8, 12 e 24 horas, além de acompanhamento hospitalar e cuidados pós-cirúrgicos, com atendimento no Rio de Janeiro e em Niterói.
+        </p>
 
         {/* Botões */}
-        <motion.div
-          {...fadeUp(0.9)}
+        <div
+          className="hero-fade"
           style={{
+            ...fade(0.9),
             display: 'flex',
             gap: 16,
             flexWrap: 'wrap',
@@ -194,11 +253,12 @@ export default function Hero() {
           >
             Conheça nossa história
           </a>
-        </motion.div>
+        </div>
       </div>
 
       {/* Seta de scroll */}
       <motion.div
+        aria-hidden="true"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.6 }}

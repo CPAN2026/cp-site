@@ -1,48 +1,49 @@
-'use client'
-
-import { useInView } from 'framer-motion'
-import { useRef } from 'react'
-
 const credenciais = [
   {
     id: 1,
-    imagem: '/gran-awards.png',
+    imagem: '/gran-awards.webp',
+    largura: 480,
+    altura: 484,
     titulo: 'GRAN AWARDS',
     descricao: 'Excelência de Qualidade 2017',
+    link: 'https://www.inqq.com.br/',
   },
   {
     id: 2,
-    imagem: '/abraz.png',
+    imagem: '/abraz.webp',
+    largura: 480,
+    altura: 128,
     titulo: 'ABRAZ',
     descricao: 'Associação Brasileira de Alzheimer',
+    link: 'https://abraz.org.br/',
   },
   {
     id: 3,
-    imagem: '/abrinq.png',
+    imagem: '/abrinq.webp',
+    largura: 480,
+    altura: 358,
     titulo: 'FUNDAÇÃO ABRINQ',
     descricao: 'Pelos Direitos da Criança e do Adolescente',
+    link: 'https://www.fadc.org.br/',
   },
 ]
 
 const apoiadores = [
-  { imagem: '/apoio-medicos-sem-fronteiras.png', nome: 'Médicos Sem Fronteiras' },
-  { imagem: '/apoio-raio-x.png', nome: 'Raio-X' },
+  { imagem: '/apoio-medicos-sem-fronteiras.webp', largura: 640, altura: 462, nome: 'Médicos Sem Fronteiras' },
+  { imagem: '/apoio-raio-x.webp', largura: 640, altura: 460, nome: 'Raio-X' },
 ]
 
 export default function Credibilidade() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
-
   return (
-    <section ref={ref} className="py-12 md:py-24 bg-white">
+    <section id="reconhecimentos" aria-labelledby="reconhecimentos-titulo" className="py-12 md:py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6">
 
         <div className="text-center mb-10 md:mb-16">
-          <h2 className="text-2xl md:text-4xl font-bold text-[#1a3a16] mb-4">
-            Reconhecimento e Credibilidade
+          <h2 id="reconhecimentos-titulo" className="text-2xl md:text-4xl font-bold text-[#1a3a16] mb-4">
+            Reconhecimentos, parcerias e iniciativas apoiadas
           </h2>
           <p className="text-gray-500 text-lg">
-            Parcerias e premiações que validam nossa excelência
+            Conheça os reconhecimentos e as organizações apresentadas pela CP em sua trajetória institucional.
           </p>
         </div>
 
@@ -50,20 +51,33 @@ export default function Credibilidade() {
           {credenciais.map((item, index) => (
             <div
               key={item.id}
-              className="border border-gray-100 rounded-2xl p-8 flex flex-col items-center justify-between text-center shadow-sm hover:shadow-md transition-shadow"
-              style={{
-                minHeight: '280px',
-                opacity: isInView ? 1 : 0,
-                transform: isInView ? 'translateY(0)' : 'translateY(40px)',
-                transition: `all 0.6s ease ${index * 0.2}s`,
-              }}
+              className="reveal border border-gray-100 rounded-2xl p-8 flex flex-col items-center justify-between text-center shadow-sm hover:shadow-md"
+              style={{ minHeight: '280px', '--reveal-delay': `${index * 0.2}s` } as React.CSSProperties}
             >
               <div className="w-full flex items-center justify-center" style={{ aspectRatio: '16/10' }}>
-                <img src={item.imagem} alt={item.titulo} className="w-full h-full" style={{ objectFit: 'contain' }} />
+                <img
+                  src={item.imagem}
+                  alt={item.titulo}
+                  width={item.largura}
+                  height={item.altura}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full"
+                  style={{ objectFit: 'contain' }}
+                />
               </div>
               <div className="mt-4">
                 <div className="w-8 h-0.5 bg-[#4a8c3f] mx-auto mb-4" />
-                <h3 className="text-[#1a3a16] font-bold text-base tracking-widest mb-2">{item.titulo}</h3>
+                <p className="font-display text-[#1a3a16] font-bold text-base tracking-widest mb-2">
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                    className="link-instituicao font-display"
+                  >
+                    {item.titulo}
+                  </a>
+                </p>
                 <p className="text-gray-500 text-sm">{item.descricao}</p>
               </div>
             </div>
@@ -71,14 +85,23 @@ export default function Credibilidade() {
         </div>
 
         <div className="text-center mb-12">
-          <h3 className="text-2xl font-bold text-[#1a3a16] mb-2">Também Apoiamos</h3>
+          <p className="font-display text-2xl font-bold text-[#1a3a16] mb-2">Também Apoiamos</p>
           <p className="text-gray-500">Organizações que compartilham nossos valores</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12 max-w-3xl mx-auto items-center">
           {apoiadores.map((item) => (
             <div key={item.nome} className="w-full flex items-center justify-center" style={{ aspectRatio: '16/9' }}>
-              <img src={item.imagem} alt={item.nome} className="w-full h-full" style={{ objectFit: 'contain' }} />
+              <img
+                src={item.imagem}
+                alt={item.nome}
+                width={item.largura}
+                height={item.altura}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full"
+                style={{ objectFit: 'contain' }}
+              />
             </div>
           ))}
         </div>

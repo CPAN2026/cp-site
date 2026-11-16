@@ -54,6 +54,7 @@ export default function WhatsAppFloat() {
         href={WA_URL}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Falar pelo WhatsApp"
         animate={
           hovered
             ? { scale: 1.08, boxShadow: '0 8px 32px rgba(0,0,0,0.3)' }

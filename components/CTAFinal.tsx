@@ -1,21 +1,12 @@
 'use client';
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
 
 const WA_URL = 'https://wa.me/19209569439';
 
 function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-60px' });
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 24 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.65, ease: 'easeOut', delay }}
-    >
+    <div className="reveal" style={{ '--reveal-delay': `${delay}s` } as React.CSSProperties}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -23,6 +14,7 @@ export default function CTAFinal() {
   return (
     <section
       id="cta-final"
+      aria-labelledby="cta-final-titulo"
       style={{ background: '#4a8c3f' }}
       className="py-[64px] md:py-[96px]"
     >
@@ -57,15 +49,16 @@ export default function CTAFinal() {
         {/* Título */}
         <FadeUp delay={0.15}>
           <h2
+            id="cta-final-titulo"
             style={{
               color: 'white',
               fontWeight: 900,
               lineHeight: 1.1,
               margin: 0,
-              fontSize: 'clamp(26px, 6vw, 68px)',
+              fontSize: 'clamp(26px, 4.5vw, 48px)',
             }}
           >
-            Vamos cuidar juntos?
+            Fale com a CP sobre o cuidado do seu familiar
           </h2>
         </FadeUp>
 
@@ -82,7 +75,7 @@ export default function CTAFinal() {
               fontFamily: 'var(--font-body), sans-serif',
             }}
           >
-            Conte um pouco sobre quem precisa de cuidado. Estamos disponíveis 24 horas por dia, 7 dias por semana, para uma avaliação inicial sem compromisso.
+            Cada família tem uma rotina e uma necessidade diferente. Entre em contato com a equipe da CP para que possamos avaliar seu caso e indicar a melhor solução.
           </p>
         </FadeUp>
 

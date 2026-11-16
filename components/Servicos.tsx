@@ -1,53 +1,50 @@
 'use client';
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
 import { Moon, Sun, Sunset, Building2, Activity, Brain } from 'lucide-react';
 
 const CARDS = [
   {
+    id: 'servico-24-horas',
     icone: <Moon size={36} color="#4a8c3f" strokeWidth={1.75} />,
-    titulo: 'Cuidador 24 horas',
-    texto: 'Acompanhamento contínuo com escalas planejadas — dia, noite e madrugada — sem interrupções na rotina do idoso.',
+    titulo: 'Cuidador de idosos 24 horas',
+    texto: 'Acompanhamento contínuo com escalas planejadas para períodos diurnos, noturnos e de madrugada, ajudando a manter a rotina de cuidado ao longo das 24 horas.',
   },
   {
+    id: 'servico-diurno',
     icone: <Sun size={36} color="#4a8c3f" strokeWidth={1.75} />,
-    titulo: 'Cuidador diurno',
-    texto: 'Suporte durante o dia para higiene, alimentação, medicação e atividades de estímulo cognitivo.',
+    titulo: 'Cuidador de idosos diurno',
+    texto: 'Apoio durante o dia em atividades de rotina, como higiene, alimentação, organização da medicação e estímulo cognitivo, conforme as necessidades definidas para cada caso.',
   },
   {
+    id: 'servico-noturno',
     icone: <Sunset size={36} color="#4a8c3f" strokeWidth={1.75} />,
-    titulo: 'Cuidador noturno',
-    texto: 'Vigilância tranquila ao longo da noite, com atenção a sono, hidratação e segurança.',
+    titulo: 'Cuidador de idosos noturno',
+    texto: 'Presença durante a noite, com atenção ao sono, à hidratação, à segurança e às necessidades que possam surgir nesse período.',
   },
   {
+    id: 'servico-acompanhante-hospitalar',
     icone: <Building2 size={36} color="#4a8c3f" strokeWidth={1.75} />,
-    titulo: 'Acompanhante hospitalar',
-    texto: 'Presença atenta em internações e consultas, mediando o contato com a equipe médica.',
+    titulo: 'Acompanhante hospitalar para idosos',
+    texto: 'Acompanhamento durante internações, exames e consultas, oferecendo companhia ao idoso e apoio na comunicação da família com a equipe responsável.',
   },
   {
+    id: 'servico-pos-cirurgico',
     icone: <Activity size={36} color="#4a8c3f" strokeWidth={1.75} />,
-    titulo: 'Cuidados pós-cirúrgicos',
-    texto: 'Recuperação assistida em casa, com curativos, mobilização e adesão ao protocolo médico.',
+    titulo: 'Cuidados pós-cirúrgicos em casa',
+    texto: 'Suporte na recuperação em casa, seguindo as orientações do protocolo médico e auxiliando na mobilidade e na rotina de cuidados indicada para o período.',
   },
   {
+    id: 'servico-alzheimer-demencias',
     icone: <Brain size={36} color="#4a8c3f" strokeWidth={1.75} />,
-    titulo: 'Cuidados em demências',
-    texto: 'Profissionais preparados para Alzheimer, Parkinson e outras condições neurodegenerativas.',
+    titulo: 'Cuidado para idosos com Alzheimer e outras demências',
+    texto: 'Cuidado adaptado à rotina de idosos com Alzheimer, Parkinson e outras condições neurodegenerativas, com profissionais preparados para necessidades específicas.',
   },
 ];
 
-function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-60px' });
+function FadeUp({ children, delay = 0, id }: { children: React.ReactNode; delay?: number; id?: string }) {
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 28 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.65, ease: 'easeOut', delay }}
-    >
+    <div id={id} className="reveal" style={{ '--reveal-delay': `${delay}s` } as React.CSSProperties}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -105,7 +102,7 @@ function Card({ icone, titulo, texto }: { icone: React.ReactNode; titulo: string
       </div>
 
       {/* Título */}
-      <div
+      <h3
         style={{
           fontFamily: 'var(--font-display), serif',
           fontWeight: 700,
@@ -115,7 +112,7 @@ function Card({ icone, titulo, texto }: { icone: React.ReactNode; titulo: string
         }}
       >
         {titulo}
-      </div>
+      </h3>
 
       {/* Texto */}
       <p
@@ -138,6 +135,7 @@ export default function Servicos() {
   return (
     <section
       id="servicos"
+      aria-labelledby="servicos-titulo"
       style={{ background: '#ffffff' }}
       className="py-[64px] md:py-[96px]"
     >
@@ -163,16 +161,17 @@ export default function Servicos() {
 
           <FadeUp delay={0.1}>
             <h2
+              id="servicos-titulo"
               style={{
                 color: '#1a3a16',
                 fontWeight: 700,
                 lineHeight: 1.15,
                 margin: '0 auto 20px',
-                maxWidth: 560,
-                fontSize: 'clamp(32px, 4vw, 52px)',
+                maxWidth: 760,
+                fontSize: 'clamp(28px, 3.5vw, 44px)',
               }}
             >
-              Cuidado sob medida para cada momento.
+              Serviços de cuidadores de idosos no Rio de Janeiro e Niterói
             </h2>
           </FadeUp>
 
@@ -183,12 +182,12 @@ export default function Servicos() {
                 fontFamily: 'var(--font-body), sans-serif',
                 fontWeight: 400,
                 fontSize: 18,
-                maxWidth: 560,
+                maxWidth: 720,
                 lineHeight: 1.7,
                 margin: '0 auto',
               }}
             >
-              Avaliamos cada caso pessoalmente e desenhamos um plano que respeita a história, as preferências e o ritmo de quem será cuidado.
+              A CP avalia cada caso pessoalmente para indicar o formato de atendimento mais adequado à rotina do idoso e da família. Há opções de cuidado diurno, noturno e 24 horas, além de acompanhamento hospitalar, cuidados pós-cirúrgicos e suporte para pessoas com demências.
             </p>
           </FadeUp>
         </div>
@@ -196,8 +195,8 @@ export default function Servicos() {
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {CARDS.map((card, i) => (
-            <FadeUp key={card.titulo} delay={0.1 + i * 0.1}>
-              <Card {...card} />
+            <FadeUp key={card.id} id={card.id} delay={0.1 + i * 0.1}>
+              <Card icone={card.icone} titulo={card.titulo} texto={card.texto} />
             </FadeUp>
           ))}
         </div>

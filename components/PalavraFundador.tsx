@@ -1,21 +1,20 @@
 'use client';
-import { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useState } from 'react';
 
 export default function PalavraFundador() {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-60px' });
   const [started, setStarted] = useState(false);
 
   return (
-    <section style={{ background: '#1a3a16' }} className="py-[64px] md:py-[96px]">
+    <section
+      id="palavra-fundador"
+      aria-labelledby="palavra-fundador-titulo"
+      style={{ background: '#1a3a16' }}
+      className="py-[64px] md:py-[96px]"
+    >
       <div style={{ maxWidth: 900, margin: '0 auto', padding: '0 24px' }}>
 
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.75, ease: 'easeOut' }}
+        <div
+          className="reveal"
           style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 32, textAlign: 'center' }}
         >
           <span
@@ -32,6 +31,7 @@ export default function PalavraFundador() {
           </span>
 
           <h2
+            id="palavra-fundador-titulo"
             style={{
               color: '#ffffff',
               fontWeight: 900,
@@ -40,7 +40,7 @@ export default function PalavraFundador() {
               fontSize: 'clamp(24px, 5vw, 44px)',
             }}
           >
-            Palavra do Fundador
+            A palavra de Arlindo Nogueira, fundador da CP
           </h2>
 
           <p
@@ -54,13 +54,10 @@ export default function PalavraFundador() {
               margin: 0,
             }}
           >
-            Conheça a história e os valores que guiam a CP Cuidadores Profissionais há mais de 15 anos.
+            Arlindo César Pinto Nogueira apresenta a origem da CP e os valores que orientam o atendimento desde 2011.
           </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.75, ease: 'easeOut', delay: 0.25 }}
+          <div
             style={{
               width: '100%',
               maxWidth: 800,
@@ -75,8 +72,12 @@ export default function PalavraFundador() {
             {!started ? (
               <>
                 <img
-                  src="/arlindocpnogueira.png"
+                  src="/arlindocpnogueira.webp"
                   alt="Arlindo César Pinto Nogueira"
+                  width={1280}
+                  height={720}
+                  loading="lazy"
+                  decoding="async"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                 />
                 <button
@@ -123,14 +124,9 @@ export default function PalavraFundador() {
                 <source src="/fundador.mp4" type="video/mp4" />
               </video>
             )}
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.45 }}
-            style={{ display: 'flex', flexDirection: 'column', gap: 6 }}
-          >
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
             <span
               style={{
                 color: '#ffffff',
@@ -153,8 +149,8 @@ export default function PalavraFundador() {
             >
               Fundador — CP Cuidadores Profissionais
             </span>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -17,10 +17,12 @@ const ITEMS: Item[] = [
 function Counter({ target, suffix, label }: Item) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
-  const [display, setDisplay] = useState('0' + suffix);
+  // Valor final no HTML inicial; a contagem é só um efeito ao entrar na tela.
+  const [display, setDisplay] = useState(String(target) + suffix);
 
   useEffect(() => {
     if (!inView) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const duration = 2000;
     let startTime: number | null = null;
     let raf: number;
@@ -70,6 +72,7 @@ export default function Numeros() {
   return (
     <section
       id="numeros"
+      aria-labelledby="numeros-titulo"
       style={{ background: '#f0f7ee' }}
       className="py-14 md:py-20"
     >
@@ -91,6 +94,7 @@ export default function Numeros() {
             CP em números
           </span>
           <h2
+            id="numeros-titulo"
             style={{
               color: '#1a3a16',
               fontWeight: 700,
@@ -99,17 +103,30 @@ export default function Numeros() {
               fontSize: 'clamp(28px, 3vw, 40px)',
             }}
           >
-            Uma trajetória construída em cuidado.
+            Experiência em cuidado de idosos desde 2011
           </h2>
+          <p
+            style={{
+              color: '#555',
+              fontFamily: 'var(--font-body), sans-serif',
+              fontWeight: 400,
+              fontSize: 17,
+              lineHeight: 1.7,
+              maxWidth: 640,
+              margin: '16px auto 0',
+            }}
+          >
+            Desde 2011, a CP Cuidadores Profissionais atende famílias no Rio de Janeiro e em Niterói com cuidadores de idosos selecionados, treinados e acompanhados de perto. Os números abaixo resumem essa trajetória.
+          </p>
         </div>
 
-        {/* Desktop */}
-        <div className="hidden md:flex items-center justify-center">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-0">
           {ITEMS.map((item, i) => (
             <div key={item.label} style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
               <Counter {...item} />
               {i < ITEMS.length - 1 && (
                 <div
+                  className="hidden md:block"
                   style={{
                     width: 1,
                     height: 80,
@@ -120,13 +137,6 @@ export default function Numeros() {
                 />
               )}
             </div>
-          ))}
-        </div>
-
-        {/* Mobile */}
-        <div className="flex md:hidden flex-col items-center gap-12">
-          {ITEMS.map((item) => (
-            <Counter key={item.label} {...item} />
           ))}
         </div>
       </div>

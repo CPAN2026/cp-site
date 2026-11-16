@@ -124,9 +124,9 @@ export default function Hero() {
         {/* H1 */}
         <h1
           id="hero-titulo"
-          className="hero-fade"
+          className="hero-rise"
           style={{
-            ...fade(0.4),
+            ...fade(0),
             color: 'white',
             fontFamily: 'var(--font-body), sans-serif',
             fontWeight: 600,
@@ -141,9 +141,9 @@ export default function Hero() {
 
         {/* Slogan */}
         <p
-          className="hero-fade"
+          className="hero-rise"
           style={{
-            ...fade(0.5),
+            ...fade(0),
             color: 'white',
             fontWeight: 900,
             lineHeight: 1.1,

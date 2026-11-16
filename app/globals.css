@@ -88,6 +88,22 @@ main:focus {
     animation-delay: var(--hero-delay, 0s);
   }
 
+  /* Título e slogan entram só com deslocamento (sem opacidade),
+     para já estarem pintados no primeiro quadro. */
+  .hero-rise {
+    animation: hero-rise-up 0.8s ease-out both;
+    animation-delay: var(--hero-delay, 0s);
+  }
+
+  @keyframes hero-rise-up {
+    from {
+      transform: translateY(30px);
+    }
+    to {
+      transform: none;
+    }
+  }
+
   @keyframes hero-fade-up {
     from {
       opacity: 0;

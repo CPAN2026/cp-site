@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const CARDS = [
   {
-    src: '/apoio-medicos-sem-fronteiras.png',
+    src: '/apoio-medicos-sem-fronteiras.webp',
     alt: 'Médicos Sem Fronteiras',
     width: 160,
     height: 72,
@@ -13,7 +13,7 @@ const CARDS = [
     delay: 0,
   },
   {
-    src: '/apoio-raio-x.png',
+    src: '/apoio-raio-x.webp',
     alt: 'Raio X Domiciliar',
     width: 140,
     height: 72,

@@ -8,9 +8,8 @@
   --cinza-claro: #f8f8f6;
 }
 
-html,
-body {
-  overflow-x: hidden;
+html {
+  overflow-x: clip;
 }
 
 body {

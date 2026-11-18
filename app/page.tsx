@@ -147,18 +147,15 @@ const jsonLd = {
             name: servico.name,
             serviceType: servico.name,
             description: servico.description,
-            provider: { '@id': ORG_ID },
           },
         })),
       },
-      mainEntityOfPage: { '@id': `${SITE_URL}/#webpage` },
     },
     {
       '@type': 'Person',
       '@id': `${SITE_URL}/#founder`,
       name: 'Arlindo César Pinto Nogueira',
       jobTitle: 'Fundador',
-      worksFor: { '@id': ORG_ID },
     },
     {
       '@type': 'WebSite',
